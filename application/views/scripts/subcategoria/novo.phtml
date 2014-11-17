@@ -1,0 +1,21 @@
+<section><!-- Sections -->
+    <form method="post" action="<?= $this->url(array("controller" => "subcategoria", "action" => "criar"), null, true) ?>">
+        <h5>Cadastro de Subcategoria:</h5><!-- Span -->
+        <input type="text" name="subcategoria" placeholder="Subcategoria" title="ex:Cesta Básica, Carnes, Higiene pessoal, etc. " required/><br/>
+        <input type="text" name="descricao" placeholder="Descrição" title="Uma breve descrição" required/><br/>
+        <select name="categoria" required title="Insira uma Categoria primeiro!">
+              <?php
+                    foreach ($this->categorias as $key => $categoria):
+               ?>
+              
+		<option value="<?=$categoria['tcat_id']?>"><?= $categoria['tcat_categoria']?></option>
+              
+              <?php
+                endforeach;
+              ?>
+              </select></br>
+        <input type="hidden" name="usuario" value="<?=$this->usuario[0]['tu_id']?>"/>
+        <input type="submit" value="Enviar"/>
+    
+    </form>
+</section>

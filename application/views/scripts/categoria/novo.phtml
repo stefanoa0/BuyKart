@@ -1,0 +1,9 @@
+<section><!-- Sections -->
+    <form method="post" action="<?= $this->url(array("controller" => "categoria", "action" => "criar"), null, true) ?>">
+        <h5>Cadastro de Categoria:</h5><!-- Span -->
+        <input type="text" name="categoria" placeholder="Categoria" required title="ex:Alimentos, Limpeza, Construção, etc."/><br/>
+        <input type="text" name="descricao" placeholder="Descrição" title="Uma breve descrição" required/><br/>
+        <input type="hidden" name="usuario" value="<?=$this->usuario[0]['tu_id']?>"/>
+        <input type="submit" value="Enviar"/>
+    </form>
+</section>

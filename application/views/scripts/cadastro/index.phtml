@@ -1,0 +1,47 @@
+
+
+
+
+
+<script type="text/javascript" >
+    jQuery(function($){
+            $("[name='cpf']").mask("999.999.999-99");
+            $("[name='cnpj']").mask("99.999.999/9999-99");
+            $("#cadastro").validate({
+                    rules:{
+                            nome:{
+                               required:true,
+                               minlength:3,
+                               maxlength:100
+                            },
+                            sobrenome:{
+                               required:true,
+                               minlength:3,
+                               maxlength:100
+                            },
+                            email:{
+                                required:true,
+                            },
+                            cpf:{
+                                required:true,
+                                cpf:true
+                            }
+
+                    }
+             });
+    });
+		</script>
+<section><!-- Sections -->
+    <form method="post" id="cadastro" action="<?= $this->url(array("controller" => "cadastro", "action" => "cadastro"), null, true) ?>">
+        <h5>Digite seus dados:</h5><!-- Span -->
+        <input type="text" name="nome" placeholder="Nome" required title="Apenas seu Nome"/><br/>
+        <input type="text" name="sobrenome" placeholder="Sobrenome" required title="Seu ultimo Sobrenome"/><br/>
+        <input type="text" name="email" placeholder="Email" required title="Seu Email"/><br/>
+        <input type="text" name="cpf" placeholder="CPF" required title="Somente Números"/><br/>
+        <input type="text" name="login" placeholder="Login" required title="Apenas letras ou números"/><br/>
+        <input type="password" name="senha" placeholder="Senha" required title="Mínimo de 6 caracteres"/><br/>
+        <input type="password" name="senha2" placeholder="Repita sua senha" required title="Repita sua senha!"/><br/>
+        <input type="submit" value="Enviar"/>
+    
+    </form>
+</section>

@@ -1,0 +1,21 @@
+<a  class="button" href="<?= $this->url(array("controller" => "subcategoria", "action" => "novo"), null, true) ?>"> Nova Subcategoria </a>
+<br/><br/>
+<table id="table" border="1">
+    <tr>
+        <th>Código</th>
+        <th>Subcategoria</th> 
+        <th>Descrição</th> <!--colspan-->
+        <th colspan="2">Categoria</th>
+    </tr>
+    
+        <?php foreach($this->subcategoria as $subcategoria): ?>
+        <tr>
+            <td><?= $subcategoria['tsub_id']?></td>
+            <td><?= $subcategoria['tsub_nome']?></td>
+            <td><?= $subcategoria['tsub_descricao']?></td>
+            <td><?= $subcategoria['tcat_categoria']?></td>
+            <td><a class="editar" href="#">Editar</a></td>
+         </tr>   
+         <?php endforeach;?>
+    
+</table>

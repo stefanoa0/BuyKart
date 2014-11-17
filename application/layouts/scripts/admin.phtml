@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <base href="http://<?= $_SERVER['HTTP_HOST'] . $this->baseUrl() ?>/" />
+            <?php
+                $this->headLink()->prependStylesheet('css/estilo.css');
+                $this->headLink()->appendStylesheet('js/jquery-ui.css');
+                $this->headLink()->appendStylesheet('js/jquery-ui.min.css');
+                $this->headScript()->prependFile('js/jquery-ui.js');
+                $this->headScript()->prependFile('js/external/jquery/jquery.js');
+                
+                $this->headScript()->appendFile('js/jquery-ui.min.js');
+
+                echo $this->headLink() . "\n";
+                echo $this->headScript() . "\n";
+            ?>
+        <title>BuyKart - Compras</title>
+    </head>
+    <body>
+        <div id="geral">
+            <header>
+                <img src="img/carrinho.png" alt="BuyKart" />
+                <h1>BuyKart - Principal</h1>
+            </header>
+            <nav class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+                <a class="button" href="<?= $this->url(array("controller" => "compra", "action" => "index"), null, true) ?>" class="menu">Compra</a>
+                <a class="button" href="<?= $this->url(array("controller" => "categoria", "action" => "index"), null, true) ?>" class="menu">Categorias</a>
+                <a class="button" href="<?= $this->url(array("controller" => "subcategoria", "action" => "index"), null, true) ?>" class="menu">SubCategorias</a>
+                <a class="button" href="<?= $this->url(array("controller" => "produto", "action" => "index"), null, true) ?>" class="menu">Produtos</a>
+                <a class="button" href="<?= $this->url(array("controller" => "login", "action" => "logout"), null, true) ?>" class="menu">Sair</a>
+            </nav>
+            <br/>
+
+            <div id="content">
+                <?php echo $this->layout()->content; ?>
+
+            </div>
+        <footer>
+            <span>Copyright © -Stefano A. </span>
+            <a href="https://www.facebook.com/stefanoazevedo" target="_blank"><img src="img/fb_icon.png" alt="Facebook" /></a>
+        </footer>
+    </body>
+</html>

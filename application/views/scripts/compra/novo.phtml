@@ -1,0 +1,10 @@
+<section><!-- Sections -->
+    <form method="post" action="<?= $this->url(array("controller" => "compra", "action" => "criar"), null, true) ?>">
+        <h5>Digite os dados da Compra:</h5><!-- Span -->
+        <input type="text" name="especificacao" placeholder="Especificação" required title="ex:Compra do Mês, Compra da Semana, etc."/><br/>
+        
+        <input type="hidden" name="usuario" value="<?= $this->usuario['tu_id']?>"/>
+        <input type="submit" value="Enviar"/>
+    
+    </form>
+</section>

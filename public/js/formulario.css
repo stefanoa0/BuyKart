@@ -1,0 +1,119 @@
+body{
+  font-family: Verdana, Helvetica, sans-serif;
+  font-size:14px;  
+  background-color:#FFF;
+  text-align:center;
+  margin: 0;
+}
+
+#container{
+	width:900px;
+	height: 1000px;
+  border-left: thin dashed #999;
+  border-right: thin dashed #999;
+	background-color:#FDFEE9;
+	margin: 0 auto;
+	padding: 10px;
+}
+
+form{
+	width: 75%;
+	border: 2px solid #370000;
+	background-color:#F3F0C5;
+	margin: auto;
+	line-height: 2.5;
+	text-align:left;
+  padding-bottom: 15px;
+  box-shadow: inset 0 1px 3px #ddd;
+  border-radius: 6px;
+}
+
+label, form p, legend {
+  color:#600;
+}
+
+form p.button{
+  text-align: center;
+}
+
+legend {
+  font-weight: bold;
+}
+
+label{
+	vertical-align:middle;
+	width: 15em;
+	float: left;
+	text-align: right;
+	margin-right: 0.5em;
+	margin-left: 3em;
+	padding:0;
+}
+
+fieldset.side{
+  width: 40%;
+  margin-left: 2em;  
+  height: 16em;
+  display: inline;
+}
+
+fieldset{
+  width: 90%;
+  margin: auto;
+  vertical-align:middle;
+  box-shadow: inset 0 1px 3px #ddd;
+  border-radius: 4px;
+}
+
+button{
+  background-color:#00010D;
+  color:white;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 3px #ddd;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  padding: 0.6em;
+}
+
+button:hover{
+  background-color:#DEDEDE;
+  color:#00010D;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+select, textarea{
+  padding: 0.5em 0.6em;
+  color: #990000;
+  background-color:#FFE ;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 3px #ddd;
+  border-radius: 4px;
+  width: 250px;
+}
+
+span{
+	font-weight:bold;
+}
+
+span.coutput{
+  padding: 1em;
+  vertical-align:middle;
+  height:3em;
+  display:block;
+}
+
+#err{
+	font-size:11px;
+	color: red;
+}
+
+#command{
+	width:100%;
+	text-align:center;
+}

@@ -1,0 +1,18 @@
+body{
+  font-family: Verdana, Helvetica, sans-serif;
+  font-size:14px;  
+  background-color:#FFF;
+  text-align:center;
+  margin: 0;
+}
+
+#container{
+	width:900px;
+	height: 1000px;
+  border-left: thin dashed #999;
+  border-right: thin dashed #999;
+	background-color:#FDFEE9;
+	margin: 0 auto;
+	padding: 10px;
+}
+

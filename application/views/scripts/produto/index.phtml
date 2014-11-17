@@ -1,0 +1,24 @@
+<a class="button" href="<?= $this->url(array("controller" => "produto", "action" => "novo"), null, true) ?>"> Novo Produto</a>
+<br/><!-- Quebra de Linha -->
+<br/>
+<table id="table" border="1"><!-- Tabela -->
+    <tr><!-- Linha -->
+        <th>Código</th><!-- Coluna - Cabeçalho -->
+        <th>Produto</th> 
+        <th>Preço Médio</th>
+        <th>Volume</th>
+        <th>Sub-Categoria</th>
+        <th>Categoria</th>
+    </tr>
+    <?php foreach($this->produtos as $produto): ?>
+            <tr>
+                <td><?= $produto['tpr_id']?></td>
+                <td><?= $produto['tpr_nome']?></td>
+                <td><?= $produto['tpr_preco']?></td>
+                <td><?= $produto['tpr_tamanho']?></td>
+                <td><?= $produto['tsub_nome']?></td>
+                <td><?= $produto['tcat_categoria']?></td>
+                <td><a class="editar" href="#">Editar</a></td>
+             </tr>   
+         <?php endforeach;?>
+</table>

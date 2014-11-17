@@ -1,0 +1,37 @@
+<!--<style>
+  label {
+    display: inline-block; width: 5em;
+  }
+  fieldset div {
+    margin-bottom: 2em;
+  }
+  fieldset .help {
+    display: inline-block;
+  }
+  .ui-tooltip {
+    width: 210px;
+  }
+  </style>
+-->
+
+<section><!-- Sections -->
+    <form method="post" action="<?= $this->url(array("controller" => "produto", "action" => "criar"), null, true) ?>">
+        <h5>Cadastro de Produtos:</h5><!-- Span -->
+        <input type="text" name="produto" placeholder="Produto" required title="Nome do produto"/><br/>
+        <input type="text" name="preco" placeholder="Preço" title="Em R$ - Apenas o Valor"/><br/>
+        <input type="text" name="tamanho" placeholder="Volume" title="Em kilogramas, litros, mililitros, gramas, unidades" required/><br/>
+        <select name="subcategoria" required title="Adicione antes uma subcategoria">
+              <?php
+                    foreach ($this->subcategorias as $key => $subcategoria):
+               ?>
+              
+		<option value="<?=$subcategoria['tcat_id']?>"><?= $subcategoria['tsub_nome']?></option>
+              
+              <?php
+                endforeach;
+              ?>
+        </select></br>
+        <input type="hidden" name="usuario" value="<?=$this->usuario[0]['tu_id']?>"/>
+        <input type="submit" value="Enviar"/>
+    </form>
+</section>

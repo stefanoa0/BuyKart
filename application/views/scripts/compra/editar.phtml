@@ -1,0 +1,59 @@
+<section><!-- Sections -->
+    <form method="post" action="<?= $this->url(array("controller" => "compra", "action" => "novoproduto"), null, true) ?>">
+        <h5>Digite os dados da Compra:</h5>
+        <input type="text" name="especificacao" disabled value="<?=$this->compras[0]['tcomp_especificacao']?>" required title="Não Altere este valor!"/><br/>
+        
+        <fieldset>
+            <legend>Adicionar Produtos</legend>
+        <select name="produto" required  title="Produto que deseja comprar">
+            <option value=""></option>
+              <?php
+                    foreach ($this->produtos as $key => $produto):
+               ?>
+              
+		<option value="<?=$produto['tpr_id']?>"><?= $produto['tpr_nome'].' '.$produto['tpr_tamanho']?></option>
+              
+              <?php
+                endforeach;
+              ?>
+        </select></br>
+        <input type="number" min='1' name="quantidade" placeholder="Quantidade"  title="Quantidade, apenas o valor" required/><br/>
+        <input type="hidden" name="compra" value="<?= $this->compras[0]['tcomp_id']?>"/>
+        <input type="hidden" name="usuario" value="<?= $this->usuario['tu_id']?>"/>
+        <input type="submit" value="Adicionar"/>
+        </fieldset>
+        
+        <fieldset>
+            <legend>Produtos Adicionados</legend>
+                
+            <table id="table" border="1">
+                <tr><!-- Linha -->
+                    <th>Produto</th> 
+                    <th>Preço Médio</th>
+                    <th>Volume</th>
+                    <th>Quantidade</th>
+                    <th>Subtotal</th>
+                </tr>
+                <?php $valor_total = 0 ?>
+                <?php foreach($this->usuario_compra as $produto): ?>
+                <tr>
+                    <td><?= $produto['tpr_nome']?></td>
+                    <td><?= $produto['tpr_preco']?></td>
+                    <td><?= $produto['tpr_tamanho']?></td>
+                    <td><?= $produto['tucp_quantidade']?></td>
+                    <td><?= $produto['tpr_preco']*$produto['tucp_quantidade'] ?></td>
+                    <?php $valor_total+= $produto['tpr_preco']*$produto['tucp_quantidade']; ?>
+                    <td><a>Remover</a></td>
+                 </tr>
+                <?php endforeach;?>
+                 
+            </table>
+            
+            
+        </fieldset>
+        <?= '<span>Valor Total = R$'.$valor_total.'</span>'?>
+    
+    </form>
+    
+    
+</section>

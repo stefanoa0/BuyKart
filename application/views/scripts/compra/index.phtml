@@ -1,0 +1,39 @@
+<a class="button" href="<?= $this->url(array("controller" => "compra", "action" => "novo"), null, true) ?>"> Nova Compra </a>
+<br/><br/>
+<table id="table" border="1">
+    <tr>
+        <th>Código</th>
+        <th>Compra</th> 
+        <th>Data</th>
+        <th>Valor</th> <!--colspan-->
+    </tr>
+    <?php foreach($this->compras as $key=>$compra): ?>
+            <tr>
+                <td><?= $compra['tcomp_id']?></td>
+                <td><?= $compra['tcomp_especificacao']?></td>
+                <td><?php $data = explode('-',$compra['tcomp_data']); $hora = explode(' ',$data[2]); echo $hora[0].'/'.$data[1].'/'.$data[0].'  '.$hora[1];?></td>
+                <td><?= $compra['valor_total']?></td>
+                <td><a class="button" href="<?= $this->url(array("controller" => "compra", "action" => "editar", "id" => $compra['tcomp_id'] ), null, true) ?>">Editar</a></td>
+                <td><a class="button" href="<?= $this->url(array("controller" => "compra", "action" => "relatorioid", "id" => $compra['tcomp_id'] ), null, true) ?>">Ver Compra</a></td>
+             </tr>   
+    <?php endforeach;?>
+</table>
+<form action="<?= $this->url(array("controller" => "compra", "action" => "relatoriomes"), null, true) ?>">
+<span>Relatório por:</span><br/>
+<select name="mes">
+    <option value="0">Completo</option>
+    <option value="1">Janeiro </option>
+    <option value="2">Fevereiro</option>
+    <option value="3">Março</option>
+    <option value="4">Abril</option>
+    <option value="5">Maio</option>
+    <option value="6">Junho</option>
+    <option value="7">Julho</option>
+    <option value="8">Agosto</option>
+    <option value="9">Setembro</option>
+    <option value="10">Outubro</option>
+    <option value="11">Novembro</option>
+    <option value="12">Dezembro</option>
+</select>
+<input type="submit">
+</form>

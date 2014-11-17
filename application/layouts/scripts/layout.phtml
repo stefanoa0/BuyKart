@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8"><!-- meta com atributo charset -->
+        <meta name="viewport" content="width=device-width">
+        <base href="http://<?= $_SERVER['HTTP_HOST'] . $this->baseUrl() ?>/" />
+            <?php
+                 $this->headLink()->prependStylesheet('css/estilo.css');
+                $this->headLink()->appendStylesheet('js/jquery-ui.css');
+                $this->headLink()->appendStylesheet('js/jquery-ui.min.css');
+                $this->headScript()->prependFile('js/external/jquery/jquery.js');
+                $this->headScript()->appendFile('js/jquery-ui.min.js');
+                $this->headScript()->appendFile('js/jquery-ui.js');
+                
+                $this->headScript()->appendFile('js/jquery.maskedinput.js');
+                $this->headScript()->appendFile('js/jquery.validate.js');
+                $this->headScript()->appendFile('js/jquery.validate.addMethod.js');
+                $this->headScript()->appendFile('js/jquery.validate.metodos.cpfcnpj.js');
+                $this->headScript()->appendFile('js/jquery.validate.messages.ptbr.js');
+                
+                echo $this->headLink() . "\n";
+                echo $this->headScript() . "\n";
+            ?>
+        <title>BuyKart - Lista de Compras</title>
+    </head>
+    <body>
+       <div id="geral">
+        <header id="topo">
+            <img src="img/carrinho.png" alt="BuyKart" />
+            <h1>BuyKart - Principal</h1>
+        </header>
+        <nav class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
+            <a class="button" href="<?= $this->url(array("controller" => "index", "action" => "index"), null, true) ?>" class="menu">Principal</a> <!-- atributo class -->
+            <a class="button" href="<?= $this->url(array("controller" => "cadastro", "action" => "index"), null, true) ?>" class="menu">Cadastre-se</a>
+            <a class="button" href="<?= $this->url(array("controller" => "login", "action" => "index"), null, true) ?>" class="menu">Login</a>
+        </nav>
+        <br/>
+        <div id="content"><!-- atributo id -->
+            <?php echo $this->layout()->content; ?>
+        </div>
+        
+        <footer>
+            <span>Copyright © -Stefano A. </span>
+            <a href="https://www.facebook.com/stefanoazevedo" target="_blank"><img src="img/fb_icon.png" alt="Facebook" /></a>
+            <a href='#topo'>Topo</a> <!-- Link para o topo da página -->
+        </footer>  
+    </body>
+</html>
