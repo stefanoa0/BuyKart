@@ -21,7 +21,7 @@ class CategoriaController extends Zend_Controller_Action
         
         $this->modelUsuario = new Application_Model_Cadastro();
         //recebe os dados do usuário
-        $this->usuario = $this->modelUsuario->select($ArrayIdentity['tlg_id']);
+        $this->usuario = $this->modelUsuario->select('tlg_id ='.$ArrayIdentity['tlg_id']);
         //envia os dados do usuário para a view
         $this->view->assign("usuario",$this->usuario);
         
@@ -29,9 +29,15 @@ class CategoriaController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        ///imprime todas as categorias que o usuário logado inseriu
         $this->modelCategoria = new Application_Model_Categoria();
-        $categorias = $this->modelCategoria->select('tu_id = '.$this->usuario[0]['tu_id']);
+        if($this->usuario[0]['tpf_id'] == 1){
+            $categorias = $this->modelCategoria->select();
+        }
+        
+        ///imprime todas as categorias que o usuário logado inseriu
+        else{
+            $categorias = $this->modelCategoria->select('tu_id = '.$this->usuario[0]['tu_id']);
+        }
         $this->view->assign("categoria",$categorias);
         
     }

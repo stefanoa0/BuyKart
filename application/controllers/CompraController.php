@@ -20,7 +20,7 @@ class CompraController extends Zend_Controller_Action
         }
         //recebe os dados do usuário e envia para a view
         $this->modelUsuario = new Application_Model_Cadastro();
-        $this->usuario = $this->modelUsuario->select($ArrayIdentity['tlg_id']);
+        $this->usuario = $this->modelUsuario->select('tlg_id ='.$ArrayIdentity['tlg_id']);
         $this->view->assign("usuario",$this->usuario[0]);
     }
 
@@ -28,8 +28,14 @@ class CompraController extends Zend_Controller_Action
     {
         //recebe todas as compras cadastradas por aquele usuário e envia para a view
         $this->modelCompra = new Application_Model_Compra();
-        $this->compras = $this->modelCompra->selectCompra('tu_id = '.$this->usuario[0]['tu_id'],'tcomp_id');
+        if($this->usuario[0]['tpf_id'] == 1){
+            $this->compras = $this->modelCompra->selectCompra();
+        }
         
+        else{
+            $this->compras = $this->modelCompra->selectCompra('tu_id = '.$this->usuario[0]['tu_id'],'tcomp_id');
+        }
+
         $this->view->assign('compras', $this->compras);
     }
     public function novoAction()
@@ -58,8 +64,12 @@ class CompraController extends Zend_Controller_Action
         
         $usuario_fez_compra = $this->modelCompra->select('tcomp_id='.$idCompra);
         $this->view->assign('usuario_compra', $usuario_fez_compra);
-        
-        $produtos = $this->modelProduto->select('tu_id = '.$this->usuario[0]['tu_id']);
+        if($this->usuario[0]['tpf_id'] == 1){
+            $produtos = $this->modelProduto->select();    
+        }
+        else{
+            $produtos = $this->modelProduto->select('tu_id = '.$this->usuario[0]['tu_id']);
+        }
         $this->view->assign("produtos",$produtos);
     }
     public function novoprodutoAction(){
@@ -94,17 +104,20 @@ class CompraController extends Zend_Controller_Action
 		$this->_helper->viewRenderer->setNoRender(true);
                 
                 $this->modelCompra = new Application_Model_Compra();
-		
-                if($param == 'mes'){
-                     $this->compras = $this->modelCompra->selectCompra('tu_id = '.$this->usuario[0]['tu_id'].' And MONTH(tcomp_data) = '.$valor,'tcomp_id');
-                }
-                if($param == 'id'){
-                    $this->compras = $this->modelCompra->selectCompra('tu_id = '.$this->usuario[0]['tu_id'].' And tcomp_id = '.$valor,'tcomp_id');
-                }
-                elseif($param == 'geral'){
-                    $this->compras = $this->modelCompra->selectCompra('tu_id = '.$this->usuario[0]['tu_id'],'tcomp_id');
-                }
-               
+		 if($this->usuario[0]['tpf_id'] == 1){
+                    $this->compras = $this->modelCompra->selectCompra(null,'tcomp_id');
+                 }
+                 else{
+                    if($param == 'mes'){
+                         $this->compras = $this->modelCompra->selectCompra('tu_id = '.$this->usuario[0]['tu_id'].' And MONTH(tcomp_data) = '.$valor,'tcomp_id');
+                    }
+                    if($param == 'id'){
+                        $this->compras = $this->modelCompra->selectCompra('tu_id = '.$this->usuario[0]['tu_id'].' And tcomp_id = '.$valor,'tcomp_id');
+                    }
+                    elseif($param == 'geral'){
+                        $this->compras = $this->modelCompra->selectCompra('tu_id = '.$this->usuario[0]['tu_id'],'tcomp_id');
+                    }
+                 }
                 $compra = $this->_getParam('id');
                 
 		require_once "../library/ModeloRelatorio.php";
